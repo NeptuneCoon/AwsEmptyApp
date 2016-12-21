@@ -8,7 +8,6 @@ using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Amazon.DynamoDBv2.DocumentModel;
-
 using Newtonsoft.Json;
 
 namespace AwsEmptyApp1
@@ -16,13 +15,14 @@ namespace AwsEmptyApp1
     /// <summary>
     /// Amazon DynamoDB数据操作类
     /// 该类实现了DynamoDB有关数据操作的基本方法，基于Amazon DynamoDB SDK高级编程接口实现
-    /// 如果需要更为底层的DynamoDB API来实现需求，请访问：
+    /// 如果需要更为底层的实现，请访问DynamoDB底层API：
     /// http://docs.amazonaws.cn/amazondynamodb/latest/developerguide/LowLevelDotNetItemsExample.html
     /// </summary>
     public class Class1
     {
         private static AmazonDynamoDBClient client = new AmazonDynamoDBClient();
 
+        // create
         #region 向指定的表中添加项目
         /// <summary>
         /// 向指定的表中添加项目
@@ -65,6 +65,7 @@ namespace AwsEmptyApp1
         }
         #endregion
 
+        // delete
         #region 从指定的表中删除项目(按主键删除)
         /// <summary>
         /// 从指定的表中删除项目(按主键删除)
@@ -130,6 +131,7 @@ namespace AwsEmptyApp1
         }
         #endregion
 
+        // retrieve
         #region 从指定的表中读取项目(按主键+排序键读取)
         /// <summary>
         /// 从指定的表中读取项目(按主键+排序键读取)
@@ -204,6 +206,14 @@ namespace AwsEmptyApp1
 
 
             return result;
+        }
+
+        // update
+        // http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/ItemCRUDDotNetDocumentAPI.html
+        // http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/gettingstartedguide/GettingStarted.NET.03.html#GettingStarted.NET.03.03
+        public static DataResult UpdateConditionally()
+        {
+
         }
     }
 }
