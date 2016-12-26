@@ -15,7 +15,7 @@ namespace AwsEmptyApp1
         {
             // 默认操作状态码为200，操作结果为成功
             this.Status = 200;
-            this.Message = "成功";
+            this.Message = "success";
         }
         /// <summary>
         /// 状态
@@ -30,6 +30,11 @@ namespace AwsEmptyApp1
         /// 错误信息
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// 操作返回的Json格式数据
+        /// </summary>
+        public string JsonResult { get; set; }
         /// <summary>
         /// 异常信息
         /// </summary>

@@ -22,42 +22,9 @@ namespace AwsEmptyApp1
     {
         public static void Main(string[] args)
         {
-            // Get an AmazonDynamoDBClient for the local database
-            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
-
-            // Create an UpdateItemRequest to modify two existing nested attributes
-            // and add a new one
-            UpdateItemRequest updateRequest = new UpdateItemRequest()
-            {
-                TableName = "Movies",
-                Key = new Dictionary<string, AttributeValue>
-        {
-          { "year",  new AttributeValue { N = "2015" } },
-          { "title", new AttributeValue { S = "The Big New Movie"}}
-        },
-                ExpressionAttributeValues = new Dictionary<string, AttributeValue>
-        {
-          { ":r", new AttributeValue { N = "5.5" } },
-          { ":p", new AttributeValue { S = "Everything happens all at once!" } },
-          { ":a", new AttributeValue { SS = { "Larry","Moe","Curly" } } }
-        },
-                UpdateExpression = "SET info.rating = :r, info.plot = :p, info.actors = :a",
-                ReturnValues = "UPDATED_NEW"
-            };
-
-            // Use AmazonDynamoDBClient.UpdateItem to update the specified attributes
-            UpdateItemResponse uir = null;
-            try { uir = client.UpdateItem(updateRequest); }
-            catch (Exception ex) {
-                Console.WriteLine("\nError: UpdateItem failed, because: " + ex.Message);
-                if (uir != null)
-                    Console.WriteLine("    Status code was " + uir.HttpStatusCode.ToString());
-            }
-
-            // Get the item from the table and display it to validate that the update succeeded
-            DisplayMovieItem(client, "2015", "The Big New Movie");
-
-            // Keep the console open if in Debug mode...
+            //Class1.TableQuery("Student");
+            //Class1.TableScan("Student");
+            Class1.UpdateConditionally("Student");
             Console.ReadKey();
             Console.WriteLine();
 
